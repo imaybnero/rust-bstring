@@ -1,9 +1,9 @@
 [package]
 name = "rawstring"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
-authors = ["imaybenero"]
+authors = ["fallennseraph"]
 description = "A string type that can hold data which may or may not be valid UTF-8."
 license = "MIT"
-repository = "https://github.com/imaybnero/rawstring"
+repository = "https://github.com/fallennseraph/rawstring"
 readme = "README.md"

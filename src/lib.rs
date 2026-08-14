@@ -1,6 +1,5 @@
 // rawstring
 #![doc = include_str!("../README.md")]
-#![feature(const_trait_impl, const_convert, const_cmp)]
 
 mod raw_str_imp;
 mod raw_string_imp;

@@ -41,9 +41,9 @@ impl RawStr {
 	/// ```
 	#[inline]
 	#[must_use]
-	pub const fn new<B>(bytes: &B) -> &Self
+	pub fn new<B>(bytes: &B) -> &Self
 	where
-		B: ?Sized + [const] AsRef<[u8]>
+		B: ?Sized + AsRef<[u8]>
 	{
 		Self::from_bytes(bytes.as_ref())
 	}
@@ -61,9 +61,9 @@ impl RawStr {
 	/// ```
 	#[inline]
 	#[must_use]
-	pub const fn new_mut<B>(b: &mut B) -> &mut Self
+	pub fn new_mut<B>(b: &mut B) -> &mut Self
 	where
-		B: ?Sized + [const] AsMut<[u8]>
+		B: ?Sized + AsMut<[u8]>
 	{
 		Self::from_bytes_mut(b.as_mut())
 	}
@@ -124,7 +124,7 @@ impl RawStr {
 	}
 }
 
-impl const Deref for RawStr {
+impl Deref for RawStr {
 	type Target = [u8];
 	
 	#[inline]
@@ -133,21 +133,21 @@ impl const Deref for RawStr {
 	}
 }
 
-impl const DerefMut for RawStr {
+impl DerefMut for RawStr {
 	#[inline]
 	fn deref_mut(&mut self) -> &mut Self::Target {
 		&mut self.0
 	}
 }
 
-impl const AsRef<[u8]> for RawStr {
+impl AsRef<[u8]> for RawStr {
 	#[inline]
 	fn as_ref(&self) -> &[u8] {
 		&self.0
 	}
 }
 
-impl const AsMut<[u8]> for RawStr {
+impl AsMut<[u8]> for RawStr {
 	#[inline]
 	fn as_mut(&mut self) -> &mut [u8] {
 		&mut self.0
@@ -226,7 +226,7 @@ impl fmt::Display for RawStr {
 	}
 }
 
-impl<T: ?Sized + [const] AsRef<[u8]>> const PartialEq<T> for RawStr {
+impl<T: ?Sized + AsRef<[u8]>> PartialEq<T> for RawStr {
 	#[inline]
 	fn eq(&self, other: &T) -> bool {
 		&self.0 == other.as_ref()
@@ -247,7 +247,7 @@ impl Ord for RawStr {
 	}
 }
 
-impl<'a> const TryFrom<&'a RawStr> for &'a str {
+impl<'a> TryFrom<&'a RawStr> for &'a str {
 	type Error = Utf8Error;
 
 	#[inline]
