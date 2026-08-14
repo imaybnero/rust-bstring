@@ -3,3 +3,4 @@ target/
 .vscode/
 .s/
 **/*.rs.bk
+.DS_Store
